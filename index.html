@@ -55,8 +55,31 @@
 <body>
 
   <div class="card">
-    <h1>Dhruv ❤️</h1>
-    <h2>Will you be my Valentine? 😍</h2>
+    <h1>hey dhruv ❤️</h1>
+  
+    <p>Will you be my Valentine? 😍</p>
+
+<div class="buttons">
+  <button onclick="yesClicked()">YES 💖</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 😜</button>
+</div>
+
+<p id="response"></p>
+
+<script>
+  
+  function yesClicked() {
+    document.getElementById("response").innerHTML =
+      "Yayyy!! 💕 You just made my day, Dhruv 🥰💍";
+  }
+
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "%";
+    btn.style.top = Math.random() * 80 + "%";
+  }
+</script>
     <p>
       You make my days brighter and my heart happier 💕  
       This is from someone who truly cares 🌹
