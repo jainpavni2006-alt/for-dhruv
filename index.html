@@ -61,7 +61,7 @@
 
 <div class="buttons">
   <button onclick="yesClicked()">YES 💖</button>
-  <button id="noBtn" onmouseover="moveNo()">NO 😜</button>
+  <button oneclick="noClicked()" id="noBtn" onmouseover="moveNo()">NO 😜</button>
 </div>
 
 <p id="response"></p>
@@ -69,9 +69,17 @@
 <script>
   
   function yesClicked() {
-    document.getElementById("response").innerHTML =
-      "Yayyy!! 💕 You just made my day, Dhruv 🥰💍";
+  document.getElementById("response").innerHTML =
+    "Yayyy 🥹💖 Tumne YES bola!!!";
+
+  for (let i = 0; i < 80; i++) {
+    setTimeout(createHeart, i * 40);
   }
+}
+  function noClicked() {
+  document.getElementById("response").innerHTML =
+    "Oh nooo 😢💔 mujhe rona aa gaya...";
+}
 
   function moveNo() {
     const btn = document.getElementById("noBtn");
@@ -93,9 +101,10 @@
       heart.classList.add("heart");
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 18 + "px";
+      heart.style.fontSize = Math.random() * 25 + 20 + "px";
+      heart.style.animationDuration = Math.random() * 2 + 2 + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+      setTimeout(() => { heart.remove()}, 4000);
     }
     setInterval(createHeart, 250);
   </script>
