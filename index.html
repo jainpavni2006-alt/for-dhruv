@@ -1,126 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>For Dhruv ❤️</title>
+  <title>Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
       height: 100vh;
+      background: linear-gradient(135deg, #ffe6f0, #fff0f5);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      text-align: center;
       overflow: hidden;
     }
-    .card {
-      background: white;
-      padding: 35px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-      max-width: 360px;
-      animation: pop 1s ease;
-      z-index: 1;
-    }
+
     h1 {
-      color: #e63946;
-      margin-bottom: 10px;
+      font-size: 24px;
+      margin-bottom: 5px;
     }
+
     h2 {
-      color: #ff4d6d;
-      margin-top: 0;
-    }
-    p {
       font-size: 20px;
-      color: #333;
+      margin-bottom: 25px;
     }
-    
-  .heart {
-  position: fixed;
-  top: -20px;
-  animation: fall linear forwards;
-  z-index: 9999;
-  pointer-events: none;
-}
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
-    @media (max-width: 600px) {
-  .card {
-    width: 90%;
-    padding: 20px;
-  }
+    button {
+      font-size: 18px;
+      padding: 12px 26px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
 
-  button {
-    font-size: 16px;
-    padding: 10px 16px;
-  }
-}
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #d3d3d3;
+      position: relative;
+      transition: transform 0.25s ease;
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 26px;
+      animation: fall 3.5s linear forwards;
+      top: -30px;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h1>hey dhruv ❤️</h1>
-  
-    <p>Will you be my Valentine? 😍</p>
+<h1>heyyy Dhruv ❤️ </h1>
+<h2>Will you be my Valentine? 😍
+  ILU DHUSS SA </h2>
 
-<div class="buttons">
-  <button onclick="yesClicked()">YES 💖</button>
-  <button oneclick="noClicked()">NO 😜</button>
+<div>
+  <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+  <button id="noBtn" onclick="noClicked()">NO 😜</button>
 </div>
 
 <p id="response"></p>
 
 <script>
-  
-  function yesClicked() {
-  document.getElementById("response").innerHTML =
-    "Yayyy 🥹💖 Tumne YES bola!!!";
+  const noBtn = document.getElementById("noBtn");
 
-  for (let i = 0; i < 120; i++) {
-    setTimeout(createHeart, i * 25);
-  }
-}
-  function noClicked() {
-  document.getElementById("response").innerHTML =
-    "Oh nooo 😢💔 mujhe rona aa gaya...";
-}
+  // NO button bhagao – desktop + mobile
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
 
   function moveNo() {
-    const btn = document.getElementById("noBtn");
-    btn.style.position = "absolute";
-    btn.style.left = Math.random() * 80 + "%";
-    btn.style.top = Math.random() * 80 + "%";
+    const x = Math.random() * 160 - 80;
+    const y = Math.random() * 160 - 80;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
   }
-</script>
-    <p>
-      You make my days brighter and my heart happier,
-      love u dhuss sa 💕💋
-       
-    </p>
-    <p><b>— Pihu 💖</b></p>
-  </div>
 
-  <script>
-    function createHeart() {
+  // YES = heart shower (birthday bomb style)
+  function yesClicked() {
+    document.getElementById("response").innerHTML =
+      "Yesss 😍💖 My Valentine forever!";
+
+    for (let i = 0; i < 80; i++) {
       const heart = document.createElement("div");
-      heart.classList.add("heart");
+      heart.className = "heart";
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 30 + 20 + "px";
-      heart.style.animationDuration = Math.random() * 1.5 + 2 + "s";
+      heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => { heart.remove()}, 3500);
+
+      setTimeout(() => heart.remove(), 4000);
     }
-    setInterval(createHeart, 250);
-  </script>
+  }
+
+  // NO click
+  function noClicked() {
+    document.getElementById("response").innerHTML =
+      "Aww 😢 NO bol diya… dil toot gaya 💔";
+  }
+</script>
 
 </body>
 </html>
